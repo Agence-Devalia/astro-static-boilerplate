@@ -1,0 +1,16 @@
+---
+import NavLink from "@/components/ui/NavLink.astro";
+import strings from "@utils/navigation.ts";
+---
+
+<!-- Main header component -->
+<header>
+    <nav>
+        <div>
+            {strings.navBarLinks.map(link => (
+                <NavLink url={link.url} name={link.name} />
+            ))}
+        </div>
+    </nav>
+</header>
+

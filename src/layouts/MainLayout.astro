@@ -1,0 +1,58 @@
+---
+import { SITE } from "@data/constants";
+import Meta from "@components/Meta.astro";
+import Navbar from "@components/sections/navigation/Navbar.astro";
+import Footer from "@/components/sections/navigation/Footer.astro";
+
+interface Props {
+	title?: string;
+    meta?: string;
+    structuredData?: object;    
+}
+
+const { title = SITE.title, meta, structuredData } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+	<head>
+        <Meta meta={meta} structuredData={structuredData} />
+		<title>{title}</title>
+
+        <!-- <script>
+            import "@/assets/scripts/lenisSmoothScroll.js";
+        </script> -->
+	</head>
+	<body class="">
+		<div class="">
+            <Navbar />
+            <main>
+                <slot />
+            </main>
+        </div>
+        <Footer />
+	</body>
+</html>
+<style is:global>
+
+    /* Import des polices présente dans /public/fonts */
+    /* @font-face {
+        font-family: 'nomDeLaPolice';
+        font-style: normal;
+        font-display: swap;
+        font-weight: 200;
+        src: url(/fonts/nomDeLaPolice.woff) format('woff');
+    } */
+
+
+    /* CSS rules for the page scrollbar */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    </style>
+</style>

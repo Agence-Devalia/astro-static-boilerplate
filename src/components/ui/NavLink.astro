@@ -1,0 +1,27 @@
+---
+// Destructure the properties from Astro.props
+const { url, name } = Astro.props;
+
+// Define TypeScript interface for the properties
+interface Props {
+  url: string;
+  name: string;
+}
+---
+
+<!--
+Re-usable link component for navigation bar. Highlights the active link
+by comparing the current URL with the href of each link.
+We assign an ID matching the URL for easy reference in our script.
+If URL is '/' (home page), assign ID as 'home' 
+-->
+<a
+  id={url === "/" ? "home" : url.replace("/", "")}
+  href={url}
+  data-navlink
+  data-nav-element
+  data-astro-prefetch
+  class=""
+>  
+    {name}
+</a>
